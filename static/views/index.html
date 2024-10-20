@@ -1,0 +1,14 @@
+{{define "IndexView"}}
+<!DOCTYPE html>
+<html>
+
+{{template "header"}}
+
+<body>
+    <div class="feed" hx-ext="sse" sse-connect="/feed/0" sse-swap="feed"></div>
+</body>
+
+{{template "footer"}}
+
+</html>
+{{end}}

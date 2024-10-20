@@ -1,0 +1,36 @@
+syntax = "proto3";
+package sequoia;
+
+option go_package = "github.com/mpoegel/sequoia/pkg/schema";
+
+import "google/protobuf/timestamp.proto";
+
+service ImageService {
+    rpc StoreRawImage(StoreRawImageRequest) returns (StoreRawImageResponse);
+    rpc LiveStream(LiveStreamRequest) returns (stream LiveStreamResponse);
+}
+
+message StoreRawImageRequest {
+    RawImage image = 1;
+    google.protobuf.Timestamp timestamp = 2;
+    string id = 3;
+}
+
+message StoreRawImageResponse {
+}
+
+message LiveStreamRequest {
+}
+
+message LiveStreamResponse {
+    string image_url = 1;
+    google.protobuf.Timestamp timestamp = 2;
+    string id = 3;
+}
+
+message RawImage {
+    bytes raw_image = 1;
+    int32 num_rows = 2;
+    int32 num_cols = 3;
+    int32 image_type = 4;
+}
